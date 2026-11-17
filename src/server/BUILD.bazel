@@ -1,0 +1,26 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+cc_library(
+    name = "server",
+    srcs = ["server.cpp"],
+    hdrs = ["server.hpp"],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    visibility = ["//src:__subpackages__"],
+    deps = [
+        "//src/protocol",
+        "//src/queue_manager",
+        "//src/replication:replicator",
+        "//src/thread_pool",
+        "//src/wal",
+    ],
+)
+
+cc_test(
+    name = "server_test",
+    srcs = ["server_test.cpp"],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    deps = [
+        ":server",
+        "//src/client",
+    ],
+)

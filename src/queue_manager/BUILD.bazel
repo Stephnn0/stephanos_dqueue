@@ -1,0 +1,17 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+cc_library(
+    name = "queue_manager",
+    srcs = ["queue_manager.cpp"],
+    hdrs = ["queue_manager.hpp"],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    visibility = ["//src:__subpackages__"],
+    deps = ["//src/message_queue"],
+)
+
+cc_test(
+    name = "queue_manager_test",
+    srcs = ["queue_manager_test.cpp"],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    deps = [":queue_manager"],
+)

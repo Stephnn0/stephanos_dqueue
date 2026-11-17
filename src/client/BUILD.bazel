@@ -1,0 +1,20 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "client",
+    srcs = [
+        "client.cpp",
+        "partitioned_client.cpp",
+    ],
+    hdrs = [
+        "client.hpp",
+        "partitioned_client.hpp",
+    ],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    visibility = ["//src:__subpackages__"],
+    deps = [
+        "//src/message_queue",
+        "//src/partition:consistent_hash",
+        "//src/protocol",
+    ],
+)

@@ -1,0 +1,16 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+cc_library(
+    name = "thread_pool",
+    srcs = ["thread_pool.cpp"],
+    hdrs = ["thread_pool.hpp"],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    visibility = ["//src:__subpackages__"],
+)
+
+cc_test(
+    name = "thread_pool_test",
+    srcs = ["thread_pool_test.cpp"],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    deps = [":thread_pool"],
+)

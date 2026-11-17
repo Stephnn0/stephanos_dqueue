@@ -1,3 +1,6 @@
+# Put Bazel convenience symlinks inside build/ instead of the project root
+build --symlink_prefix=build/
+
 # C++20 for everything
 build --cxxopt=-std=c++20
 build --host_cxxopt=-std=c++20

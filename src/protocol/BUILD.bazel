@@ -1,0 +1,16 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+cc_library(
+    name = "protocol",
+    srcs = ["protocol.cpp"],
+    hdrs = ["protocol.hpp"],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    visibility = ["//src:__subpackages__"],
+)
+
+cc_test(
+    name = "protocol_test",
+    srcs = ["protocol_test.cpp"],
+    copts = ["-std=c++20", "-Wall", "-Wextra"],
+    deps = [":protocol"],
+)
