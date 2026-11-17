@@ -1,0 +1,16 @@
+- run bazel run //:dqueue
+
+- auto makes compiler detect type automatically
+
+
+
+
+Many clients pushing and popping at the same time → threads and locks
+
+Clients on other machines → TCP networking and a protocol
+
+A consumer crashing mid-message → acks and redelivery
+
+The broker crashing → writing messages to disk and recovering them
+
+A whole machine dying → copying data to other brokers (replication)

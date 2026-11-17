@@ -1,0 +1,11 @@
+# C++20 for everything
+build --cxxopt=-std=c++20
+build --host_cxxopt=-std=c++20
+
+# Show test output when a test fails
+test --test_output=errors
+
+# ThreadSanitizer: bazel test --config=tsan //...
+build:tsan --copt=-fsanitize=thread
+build:tsan --copt=-g
+build:tsan --linkopt=-fsanitize=thread
